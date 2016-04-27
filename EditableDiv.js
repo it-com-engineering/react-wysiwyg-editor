@@ -238,6 +238,7 @@ module.exports = React.createClass({
 				React.createElement(Input, { type: 'text',
 					ref: 'linkInput',
 					name: 'url',
+					defaultValue: 'http://',
 					label: 'Link URL'
 				}),
 				React.createElement(ButtonInput, { type: 'submit', value: 'Submit', onClick: this._onLinkSubmit })
@@ -421,6 +422,10 @@ module.exports = React.createClass({
 				contentEditable: 'true',
 				dangerouslySetInnerHTML: { __html: this.state.html },
 				onBlur: function onBlur(e) {
+					if (!e || !e.relatedTarget) {
+						return;
+					}
+
 					if (e.relatedTarget.id === 'imgUploadBtn' || e.relatedTarget.id === 'videoUploadBtn' || e.relatedTarget.id === 'linkCreateBtn') {
 						e.preventDefault();
 						_this3.refs.editor.getDOMNode().focus();

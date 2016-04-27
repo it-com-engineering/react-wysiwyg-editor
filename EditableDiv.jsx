@@ -211,6 +211,7 @@ module.exports = React.createClass({
 					<Input type="text"
 					       ref="linkInput"
 					       name="url"
+					       defaultValue="http://"
 					       label="Link URL"
 						/>
 					<ButtonInput type="submit" value="Submit" onClick={this._onLinkSubmit}/>
@@ -288,6 +289,10 @@ module.exports = React.createClass({
 					contentEditable="true"
 					dangerouslySetInnerHTML={{__html: this.state.html}}
 					onBlur={(e) => {
+						if (!e || !e.relatedTarget) {
+							return;
+						}
+
 						if (e.relatedTarget.id === 'imgUploadBtn' || e.relatedTarget.id === 'videoUploadBtn' || e.relatedTarget.id === 'linkCreateBtn') {
 							e.preventDefault();
 							this.refs.editor.getDOMNode().focus();
