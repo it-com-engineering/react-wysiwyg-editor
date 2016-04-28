@@ -141,7 +141,7 @@ module.exports = React.createClass({
 	_onLinkSubmit: function _onLinkSubmit() {
 		this.refs.editor.getDOMNode().focus();
 		this._restoreSelection(this.state.textSelection);
-		this._execCommand('createLink', this.refs.linkInput.getInputDOMNode().value);
+		this._execCommand('createLink', 'javascript:window.open(\'' + this.refs.linkInput.getInputDOMNode().value + '\');');
 		this._toggleLinkTooltip();
 	},
 
