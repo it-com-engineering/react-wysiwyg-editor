@@ -90,7 +90,7 @@ module.exports = React.createClass({
 	_onImageSubmit: function() {
 		var files = this.refs.imageInput.getInputDOMNode().files;
 		this.props.onImageUpload(files, (url) => {
-			this.refs.editor.getDOMNode().focus();
+			ReactDOM.findDOMNode(this.refs.editor).focus();
 			this._execCommand('insertImage', url);
 		});
 		this._toggleImageTooltip();
@@ -99,7 +99,7 @@ module.exports = React.createClass({
 	_onVideoSubmit: function() {
 		var files = this.refs.videoInput.getInputDOMNode().files;
 		this.props.onVideoUpload(files, (url) => {
-			this.refs.editor.getDOMNode().focus();
+			ReactDOM.findDOMNode(this.refs.editor).focus();
 			this._execCommand('insertHTML', `<figure><video controls width="400" src="${url}">Your browser does not support HTML5 video.</video></figure>`);
 		});
 		this._toggleVideoTooltip();
@@ -134,7 +134,7 @@ module.exports = React.createClass({
 	},
 
 	_onLinkSubmit: function() {
-		this.refs.editor.getDOMNode().focus();
+		ReactDOM.findDOMNode(this.refs.editor).focus();
 		this._restoreSelection(this.state.textSelection);
 		this._execCommand('createLink', 'javascript:window.open(\'' + this.refs.linkInput.getInputDOMNode().value + '\');');
 		this._toggleLinkTooltip();
@@ -171,7 +171,7 @@ module.exports = React.createClass({
 				placement={imgTooltipPlacement}
 				container={this}
 				rootClose={true}
-				target={() => this.refs.imgUploadBtn.getDOMNode()} >
+				target={() => ReactDOM.findDOMNode(this.refs.imgUploadBtn)} >
 				<Popover id="popover" title="Image Upload" >
 					<Input type="file"
 						ref="imageInput"
@@ -189,7 +189,7 @@ module.exports = React.createClass({
 				placement={videoTooltipPlacement}
 				container={this}
 				rootClose={true}
-				target={() => this.refs.videoUploadBtn.getDOMNode()} >
+				target={() => ReactDOM.findDOMNode(this.refs.videoUploadBtn)} >
 				<Popover id="popover" title="Video Upload" >
 					<Input type="file"
 						ref="videoInput"
@@ -207,7 +207,7 @@ module.exports = React.createClass({
 				placement={linkTooltipPlacement}
 				container={this}
 				rootClose={true}
-				target={() => this.refs.linkCreateBtn.getDOMNode()} >
+				target={() => ReactDOM.findDOMNode(this.refs.linkCreateBtn)} >
 				<Popover id="popover" title="Create Link">
 					<Input type="text"
 					       ref="linkInput"
@@ -296,7 +296,7 @@ module.exports = React.createClass({
 
 						if (e.relatedTarget.id === 'imgUploadBtn' || e.relatedTarget.id === 'videoUploadBtn' || e.relatedTarget.id === 'linkCreateBtn') {
 							e.preventDefault();
-							this.refs.editor.getDOMNode().focus();
+							ReactDOM.findDOMNode(this.refs.editor).focus();
 						}
 					}}
 					onInput={this._emitChange}/>
