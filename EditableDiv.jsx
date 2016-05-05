@@ -1,6 +1,7 @@
 'use strict';
 var $ = require('npm-zepto');
 var React = require('react');
+var ReactDOM = require('react-dom');
 var ReactBootstrap = require('react-bootstrap');
 var ButtonGroup = ReactBootstrap.ButtonGroup;
 var DropdownButton = ReactBootstrap.DropdownButton;
@@ -74,7 +75,7 @@ module.exports = React.createClass({
 	},
 
 	_emitChange: function() {
-		var editor = this.refs.editor.getDOMNode();
+		var editor = ReactDOM.findDOMNode(this.refs.editor);
 		var newHtml = editor.innerHTML;
 
 		this.setState({html: newHtml}, function() {

@@ -4,6 +4,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var $ = require('npm-zepto');
 var React = require('react');
+var ReactDOM = require('react-dom');
 var ReactBootstrap = require('react-bootstrap');
 var ButtonGroup = ReactBootstrap.ButtonGroup;
 var DropdownButton = ReactBootstrap.DropdownButton;
@@ -76,7 +77,7 @@ module.exports = React.createClass({
 	},
 
 	_emitChange: function _emitChange() {
-		var editor = this.refs.editor.getDOMNode();
+		var editor = ReactDOM.findNode(this.refs.editor);
 		var newHtml = editor.innerHTML;
 
 		this.setState({ html: newHtml }, function () {
