@@ -174,11 +174,11 @@ module.exports = React.createClass({
 				target={() => ReactDOM.findDOMNode(this.refs.imgUploadBtn)} >
 				<Popover id="popover" title="Image Upload" >
 					<Input type="file"
-						ref="imageInput"
-						name="file"
-						label="Select an image to upload"
-					/>
-					<ButtonInput type="submit" value="Submit" onClick={this._onImageSubmit}/>
+					       ref="imageInput"
+					       name="file"
+					       label="Select an image to upload"
+						/>
+					<Button type="submit" onClick={this._onImageSubmit}>Submit</Button>
 				</Popover>
 			</Overlay>
 		);
@@ -192,11 +192,11 @@ module.exports = React.createClass({
 				target={() => ReactDOM.findDOMNode(this.refs.videoUploadBtn)} >
 				<Popover id="popover" title="Video Upload" >
 					<Input type="file"
-						ref="videoInput"
-						name="file"
-						label="Select a video to upload"
-					/>
-					<ButtonInput type="submit" value="Submit" onClick={this._onVideoSubmit}/>
+					       ref="videoInput"
+					       name="file"
+					       label="Select a video to upload"
+						/>
+					<Button type="submit" onClick={this._onVideoSubmit}>Submit</Button>
 				</Popover>
 			</Overlay>
 		);
@@ -215,7 +215,7 @@ module.exports = React.createClass({
 					       defaultValue="http://"
 					       label="Link URL"
 						/>
-					<ButtonInput type="submit" value="Submit" onClick={this._onLinkSubmit}/>
+					<Button type="submit" onClick={this._onLinkSubmit}>Submit</Button>
 				</Popover>
 			</Overlay>
 		);

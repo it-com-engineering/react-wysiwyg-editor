@@ -94,7 +94,7 @@ module.exports = React.createClass({
 
 		var files = this.refs.imageInput.getInputDOMNode().files;
 		this.props.onImageUpload(files, function (url) {
-			  ReactDOM.findDOMNode(_this.refs.editor).focus();
+			ReactDOM.findDOMNode(_this.refs.editor).focus();
 			_this._execCommand('insertImage', url);
 		});
 		this._toggleImageTooltip();
@@ -105,7 +105,7 @@ module.exports = React.createClass({
 
 		var files = this.refs.videoInput.getInputDOMNode().files;
 		this.props.onVideoUpload(files, function (url) {
-			  ReactDOM.findDOMNode(_this2.refs.editor).focus();
+			ReactDOM.findDOMNode(_this2.refs.editor).focus();
 			_this2._execCommand('insertHTML', '<figure><video controls width="400" src="' + url + '">Your browser does not support HTML5 video.</video></figure>');
 		});
 		this._toggleVideoTooltip();
@@ -140,7 +140,7 @@ module.exports = React.createClass({
 	},
 
 	_onLinkSubmit: function _onLinkSubmit() {
-		  ReactDOM.findDOMNode(this.refs.editor).focus();
+		ReactDOM.findDOMNode(this.refs.editor).focus();
 		this._restoreSelection(this.state.textSelection);
 		this._execCommand('createLink', 'javascript:window.open(\'' + this.refs.linkInput.getInputDOMNode().value + '\');');
 		this._toggleLinkTooltip();
@@ -183,7 +183,7 @@ module.exports = React.createClass({
 				container: this,
 				rootClose: true,
 				target: function target() {
-					  return ReactDOM.findDOMNode(_this3.refs.imgUploadBtn);
+					return ReactDOM.findDOMNode(_this3.refs.imgUploadBtn);
 				} },
 			React.createElement(
 				Popover,
@@ -193,7 +193,11 @@ module.exports = React.createClass({
 					name: 'file',
 					label: 'Select an image to upload'
 				}),
-				React.createElement(ButtonInput, { type: 'submit', value: 'Submit', onClick: this._onImageSubmit })
+				React.createElement(
+					Button,
+					{ type: 'submit', onClick: this._onImageSubmit },
+					'Submit'
+				)
 			)
 		);
 		var videoUpload = this.props.onVideoUpload === undefined ? null : React.createElement(
@@ -207,7 +211,7 @@ module.exports = React.createClass({
 				container: this,
 				rootClose: true,
 				target: function target() {
-					  return ReactDOM.findDOMNode(_this3.refs.videoUploadBtn);
+					return ReactDOM.findDOMNode(_this3.refs.videoUploadBtn);
 				} },
 			React.createElement(
 				Popover,
@@ -217,7 +221,11 @@ module.exports = React.createClass({
 					name: 'file',
 					label: 'Select a video to upload'
 				}),
-				React.createElement(ButtonInput, { type: 'submit', value: 'Submit', onClick: this._onVideoSubmit })
+				React.createElement(
+					Button,
+					{ type: 'submit', onClick: this._onVideoSubmit },
+					'Submit'
+				)
 			)
 		);
 		var linkCreate = React.createElement(
@@ -231,7 +239,7 @@ module.exports = React.createClass({
 				container: this,
 				rootClose: true,
 				target: function target() {
-					  return ReactDOM.findDOMNode(_this3.refs.linkCreateBtn);
+					return ReactDOM.findDOMNode(_this3.refs.linkCreateBtn);
 				} },
 			React.createElement(
 				Popover,
@@ -242,7 +250,11 @@ module.exports = React.createClass({
 					defaultValue: 'http://',
 					label: 'Link URL'
 				}),
-				React.createElement(ButtonInput, { type: 'submit', value: 'Submit', onClick: this._onLinkSubmit })
+				React.createElement(
+					Button,
+					{ type: 'submit', onClick: this._onLinkSubmit },
+					'Submit'
+				)
 			)
 		);
 		return React.createElement(
@@ -429,7 +441,7 @@ module.exports = React.createClass({
 
 					if (e.relatedTarget.id === 'imgUploadBtn' || e.relatedTarget.id === 'videoUploadBtn' || e.relatedTarget.id === 'linkCreateBtn') {
 						e.preventDefault();
-						  ReactDOM.findDOMNode(_this3.refs.editor).focus();
+						ReactDOM.findDOMNode(_this3.refs.editor).focus();
 					}
 				},
 				onInput: this._emitChange }))
