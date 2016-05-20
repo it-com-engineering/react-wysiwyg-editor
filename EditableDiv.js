@@ -106,7 +106,7 @@ module.exports = React.createClass({
 		var files = this.refs.videoInput.getInputDOMNode().files;
 		this.props.onVideoUpload(files, function (url) {
 			ReactDOM.findDOMNode(_this2.refs.editor).focus();
-			_this2._execCommand('insertHTML', '<figure><video controls width="400" src="' + url + '">Your browser does not support HTML5 video.</video></figure>');
+			_this2._execCommand('insertHTML', '<figure><video controls width="400" src="' + url + '">Your browser does not support HTML5 video.</video><br/></figure>');
 		});
 		this._toggleVideoTooltip();
 	},
