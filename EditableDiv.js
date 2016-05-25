@@ -444,7 +444,9 @@ module.exports = React.createClass({
 						ReactDOM.findDOMNode(_this3.refs.editor).focus();
 					}
 				},
-				onInput: this._emitChange }))
+				onInput: this._emitChange,
+				onKeyPress: this._emitChange
+			}))
 		);
 	}
 });
