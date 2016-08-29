@@ -445,7 +445,7 @@ module.exports = React.createClass({
 					}
 				},
 				onInput: this._emitChange,
-				onKeyPress: this._emitChange
+				onKeyUp: this._emitChange
 			}))
 		);
 	}
